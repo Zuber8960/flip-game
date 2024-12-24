@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom right, #fcbe00, #d55844, #7e0ddf);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fa-star {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 30em;
+    gap: 0.5em;
+}
+
+.top-container {
+    /* flex-basis: 100%; */
+    display: flex;
+    gap: 5px;
+    /* border: 1px solid; */
+    align-self: flex-start;
+
+}
+
+#start {
+    padding: 10px;
+    text-align: center;
+    background-color: #282a3a;
+    color: gray;
+    font-weight: bold;
+    font-size: larger;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.moves-and-time {
+    /* background-color: antiquewhite; */
+    color: #fff;
+    font-weight: bold;
+
+    /* font-size: large; */
+}
+
+
+.card-container {
+    background: linear-gradient(to top left, #fcbe00, #d55844, #7e0ddf);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    /* border: 1px solid; */
+    border-radius: 16px;
+    /* flex-basis: 33%; */
+    /* flex-direction: column; */
+    gap: 10px;
+    /* padding: 10px; */
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    /* border: 0.5px solid; */
+    border-radius: 10px;
+    text-align: center;
+    height: 60px;
+    width: 60px;
+    background-color: #282a3a;
+    cursor: pointer;
+}
+
+
+img {
+    display: none;
+    width: 60px;
+    height: 60px;
+}
+
+
+.rotateImage {
+    transform: rotateZ(90deg) rotateY(180deg) rotateZ(90deg);
+    /* transform : rotateY(180deg); */
+    background-color: #fff;
+    transition: 1s;
+}
+
+.rotateBack {
+    /* transform : rotateZ(360deg) rotateY(360deg) rotateZ(360deg); */
+    transform: rotateY(360deg);
+    background-color: #282a3a;
+    transition: 1s;
+}
+
+@media (max-width:400px) {
+    .main-container {
+        flex-basis: 25em;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card {
+        height: 40px;
+        width: 40px;
+    }
+}

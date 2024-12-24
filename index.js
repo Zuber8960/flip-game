@@ -20,30 +20,39 @@ function shuffle(array) {
 }
 
 // Duplicate the array for pairs and shuffle
-const shuffledCards = shuffle([...cardData, ...cardData,  ...cardData, ...cardData]); // Double the cards for pairs
+let data = [...cardData, ...cardData,  ...cardData, ...cardData];
 
 const cards = document.querySelectorAll(".card");
 const cardContains = document.querySelector('#container');
+const designer = document.getElementById("designer");
 
-shuffledCards.forEach(card => {
-    const div = document.createElement('div');
-    div.classList.add('card');
-    const img = document.createElement('img');
-    img.src = card.img;
-    img.alt = card.name;
-    img.name = card.name;
-    // Clear existing content and append the image
-    div.innerHTML = ''; 
-    div.appendChild(img);
-    cardContains.appendChild(div);
-})
+
+startGameN(data);
+
+
+function startGameN (data, message="Design by Zuber 😊") {
+    let shuffledCards = shuffle(data); // Double the cards for pairs
+    designer.innerText = message;
+    cardContains.innerHTML = "";
+    shuffledCards.forEach(card => {
+        const div = document.createElement('div');
+        div.classList.add('card');
+        const img = document.createElement('img');
+        img.src = card.img;
+        img.alt = card.name;
+        img.name = card.name;
+        // Clear existing content and append the image
+        div.innerHTML = ''; 
+        div.appendChild(img);
+        cardContains.appendChild(div);
+    });
+}
 
 
 const start = document.getElementById("start");
 const reset = document.getElementById("reset");
 const moves = document.getElementById("move");
 const timer = document.getElementById("timer");
-
 const cardsContainer = document.querySelector(".card-container");
 
 let previousCard;
@@ -76,7 +85,7 @@ function endGame(event) {
         timer.innerText = 0;
         moves.innerText = 0;
         flag = false;
-        shuffle([...cardData, ...cardData, ...cardData, ...cardData])
+        startGameN(data, "Play Again !");
     };
 }
 
@@ -125,9 +134,10 @@ function shuffleEvent(event) {
 
             runningCards = 0;
 
-            if (numberOfMatches === 8) {
+            if (numberOfMatches === data.length/2) {
                 console.log("all cards matched");
                 clearInterval(setIntervalId);
+                designer.innerText = "Congratualation !😊";
             };
 
         } else {

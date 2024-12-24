@@ -151,6 +151,23 @@ img {
     transition: 1s;
 }
 
+.game-levels {
+    display: flex;
+    gap: 15px;
+}
+
+.level {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    background: #282a3a;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 @media (max-width:400px) {
     .main-container {
         flex-basis: 25em;

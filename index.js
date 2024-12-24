@@ -6,9 +6,9 @@ const cardData = [
     { name: 'guava', img: 'https://hotemoji.com/images/emoji/5/17zcrtb1gokjb5.png' },
     { name: 'orange', img: 'https://hotemoji.com/images/emoji/i/l80silyls6zi.png' },
     { name: 'cherry', img: 'https://hotemoji.com/images/emoji/k/6z6f7w13xwgpk.png' },
-    { name: 'grapes', img: 'https://hotemoji.com/images/emoji/g/17zcrtby88zdg.png' },
-    
+    { name: 'grapes', img: 'https://hotemoji.com/images/emoji/g/17zcrtby88zdg.png' }
 ];
+
 
 // Function to shuffle an array
 function shuffle(array) {
@@ -23,8 +23,25 @@ function shuffle(array) {
 let data = [...cardData, ...cardData,  ...cardData, ...cardData];
 
 const cards = document.querySelectorAll(".card");
+const levels = document.querySelectorAll(".level");
 const cardContains = document.querySelector('#container');
 const designer = document.getElementById("designer");
+levels.forEach(level => {
+    level.addEventListener('click', () => {
+        const selectedLevel = level.getAttribute('data-level');
+        let myData = [...cardData];
+        if (selectedLevel === "Easy") {
+            myData = myData.slice(4);
+            data = [...myData, ...myData];
+        } else if (selectedLevel === "Medium") {
+            data = [...cardData, ...cardData];
+        } else if (selectedLevel === "Hard") {
+            data = [...cardData, ...cardData, ...cardData, ...cardData];
+        }
+        startGameN(data);
+    });
+});
+
 
 
 startGameN(data);

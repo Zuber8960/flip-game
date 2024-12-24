@@ -53,6 +53,16 @@ body {
     cursor: pointer;
 }
 
+#designer{
+    padding: 10px;
+    text-align: center;
+    background-color: #282a3a;
+    color: #fff;
+    font-weight: bold;
+    font-size: larger;
+    border-radius: 10px;
+}
+
 
 #reset {
     padding: 10px;

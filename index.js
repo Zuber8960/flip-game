@@ -32,6 +32,7 @@ const reset = document.getElementById("reset");
 const moves = document.getElementById("move");
 const timer = document.getElementById("timer");
 const cardsContainer = document.querySelector(".card-container");
+let scratch = true;
 
 
 
@@ -54,6 +55,12 @@ levels.forEach(level => {
         }
         startGameN(data);
     });
+    if (scratch === true) {
+        let myData = [...cardData].slice(4);
+        data = [...myData, ...myData];
+        startGameN(data);
+        scratch = false;
+    }
 });
 
 

@@ -39,7 +39,8 @@ shuffledCards.forEach(card => {
 })
 
 
-const start = document.getElementById("start")
+const start = document.getElementById("start");
+const reset = document.getElementById("reset");
 const moves = document.getElementById("move");
 const timer = document.getElementById("timer");
 
@@ -51,11 +52,13 @@ let numberOfMatches = 0;
 let setIntervalId;
 
 start.addEventListener("click", startGame);
+reset.addEventListener("click", endGame);
 
 cardsContainer.addEventListener("click", shuffleEvent);
 
 function startGame(event) {
     start.style.color = "#fff";
+    reset.style.color = "gray";
     if (flag === false) {
         setIntervalId = setInterval(() => {
             timer.innerText = Number(timer.innerText) + 1;
@@ -63,6 +66,35 @@ function startGame(event) {
         flag = true;
     };
 };
+
+function endGame(event) {
+    if (flag === true) {
+        reset.style.color = "#fff";
+        start.style.color = "gray";
+        clearInterval(setIntervalId);
+        flipBackAll();
+        timer.innerText = 0;
+        moves.innerText = 0;
+        flag = false;
+        shuffle([...cardData, ...cardData, ...cardData, ...cardData])
+    };
+}
+
+function flipBackAll () {
+    document.querySelectorAll(".card").forEach(card => {
+        console.log(card);
+        // if (card.classList.contains("rotateImage")) {
+        //     card.classList.contains("rotateImage");
+        //     card.style.display = "none";
+        // };
+        card.classList.remove("rotateImage");
+        card.classList.add("rotateBack");
+        card.firstElementChild.style.display = "none";
+        card.classList.remove("rotateImage");
+        card.classList.add("rotateBack");
+        card.firstElementChild.style.display = "none";
+    })
+}
 
 
 let runningCards = 0;

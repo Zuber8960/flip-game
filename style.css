@@ -33,15 +33,28 @@ body {
 }
 
 .top-container {
-    /* flex-basis: 100%; */
+    flex-basis: 500%;
     display: flex;
-    gap: 5px;
+    /* justify-content: space-between; */
+    gap: 15px;
     /* border: 1px solid; */
-    align-self: flex-start;
+    /* align-self: flex-start; */
 
 }
 
 #start {
+    padding: 10px;
+    text-align: center;
+    background-color: #282a3a;
+    color: gray;
+    font-weight: bold;
+    font-size: larger;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+#reset {
     padding: 10px;
     text-align: center;
     background-color: #282a3a;
@@ -60,22 +73,40 @@ body {
     /* font-size: large; */
 }
 
-
+/* 
 .card-container {
     background: linear-gradient(to top left, #fcbe00, #d55844, #7e0ddf);
     background-attachment: fixed;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
+    justify-content: center; */
     /* flex-wrap: wrap; */
     /* border: 1px solid; */
-    border-radius: 16px;
+    /* border-radius: 16px; */
     /* flex-basis: 33%; */
     /* flex-direction: column; */
-    gap: 10px;
+    /* gap: 10px; */
     /* padding: 10px; */
-    padding: 20px;
+    /* padding: 20px;
     flex-wrap: wrap;
+} */
+
+.card-container {
+    background: linear-gradient(to top left, #fcbe00, #d55844, #7e0ddf);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 10px;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+
+.card-container {
+    grid-template-columns: repeat(4, 60px); /* Adjust for 4 columns */
 }
 
 .card {

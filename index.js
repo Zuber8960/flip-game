@@ -26,6 +26,20 @@ const cards = document.querySelectorAll(".card");
 const levels = document.querySelectorAll(".level");
 const cardContains = document.querySelector('#container');
 const designer = document.getElementById("designer");
+
+const start = document.getElementById("start");
+const reset = document.getElementById("reset");
+const moves = document.getElementById("move");
+const timer = document.getElementById("timer");
+const cardsContainer = document.querySelector(".card-container");
+
+
+
+let previousCard;
+let flag = false;
+let numberOfMatches = 0;
+let setIntervalId;
+
 levels.forEach(level => {
     level.addEventListener('click', () => {
         const selectedLevel = level.getAttribute('data-level');
@@ -50,6 +64,7 @@ startGameN(data);
 function startGameN (data, message="Design by Zuber 😊") {
     let shuffledCards = shuffle(data); // Double the cards for pairs
     designer.innerText = message;
+    endGame();
     cardContains.innerHTML = "";
     shuffledCards.forEach(card => {
         const div = document.createElement('div');
@@ -66,16 +81,6 @@ function startGameN (data, message="Design by Zuber 😊") {
 }
 
 
-const start = document.getElementById("start");
-const reset = document.getElementById("reset");
-const moves = document.getElementById("move");
-const timer = document.getElementById("timer");
-const cardsContainer = document.querySelector(".card-container");
-
-let previousCard;
-let flag = false;
-let numberOfMatches = 0;
-let setIntervalId;
 
 start.addEventListener("click", startGame);
 reset.addEventListener("click", endGame);
@@ -85,6 +90,7 @@ cardsContainer.addEventListener("click", shuffleEvent);
 function startGame(event) {
     start.style.color = "#fff";
     reset.style.color = "gray";
+    console.log(flag);
     if (flag === false) {
         setIntervalId = setInterval(() => {
             timer.innerText = Number(timer.innerText) + 1;
